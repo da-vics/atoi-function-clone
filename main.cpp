@@ -162,7 +162,7 @@ else{
 ///...............................................................................
 
 
-int num_c(char ptr){     /// for c strings
+int num_c(char ptr){     /// for char  modified atoi fuction(overloading)........... number conversion for a single char
 
 bool check = false;
 int get;
