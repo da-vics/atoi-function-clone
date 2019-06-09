@@ -46,8 +46,6 @@ void cha(int &get, char ptr){
                     get = 9;
 
                 }
-
-
 }
 ///...............................................
 int num_c(char *ptr){     /// for c strings
@@ -60,25 +58,30 @@ int get;
 
 for(int i = 0; i<strlen(ptr); ++i){
 
-    if(isdigit(ptr[i]) || ptr[0] == '-'){
+    if(isdigit(ptr[i])){
 
         check = true;
     }
     else{
-        check = false;
-        break;
+            if(ptr[i] == '-' && i==0 || ptr[i] == '+' &&i==0){
+                check = true;
+            }
+            else{
+                 check = false;
+        cout<<"Error! not a full digit number!"<<endl;
+        return 0;
+            }
+
     }
 
 }
 
-
 if(check){
 
                         int in;
-            (ptr[0] == '-') ? in=1, siz-=1: in=0;   ///
+            (ptr[0] == '-' || ptr[0] =='+') ? in=1, siz-=1: in=0;   ///
 
                cha(get,ptr[in]); ///
-
 
                 int j =in+1;
 
@@ -145,7 +148,7 @@ if(check){
 } ///
 
         }
-        if(in!=0){
+        if(in!=0 && ptr[0] == '-'){
         get *=-1;
 
             }
@@ -153,16 +156,12 @@ if(check){
         return get;
 }///
 
-else{
-        cout<<"Error! not a full digit number!"<<endl;
-    return 0;
-}
 
 } /// end
 ///...............................................................................
 
 
-int num_c(char ptr){     /// for char  modified atoi fuction(overloading)........... number conversion for a single char
+int num_c(char ptr){     /// for c strings
 
 bool check = false;
 int get;
@@ -173,6 +172,8 @@ int get;
     }
     else{
         check = false;
+          cout<<"Error! not a full digit number!"<<endl;
+    return 0;
 
     }
 
@@ -183,23 +184,15 @@ if(check){
                  return get;
 }
 
-else{
-     cout<<"Error! not a full digit number!"<<endl;
-    return 0;
-}
 
 } ///
 
 int main()
 {
-
-char vic[] = "-457";
+char vic[] = "67878";
 
 cout<<num_c(vic)<<endl;
 
 cout<<atoi(vic)<<endl;
-
-
-
 
 }
